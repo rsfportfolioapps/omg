@@ -1,0 +1,9 @@
+<div class="inbox-container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+
+  <app-inbox *ngIf="loadInboxData" [loadInboxData]="loadInboxData"
+                [isSearch]="isSearch"
+                (loadInboxEmitter)="handleLoadInboxEvent($event)"
+                (deleteInboxEmitter) ="handleDeleteInboxEvent($event)">
+  </app-inbox>
+
+</div>

@@ -1,0 +1,37 @@
+@import "src/styleguide/shared";
+
+.btn-add {
+  @include btn-primary;
+  margin: 0;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 20px;
+}
+
+.tag-container {
+  min-height: 40px;
+}
+
+.tag-chip {
+  padding: 5px 10px;
+  background: $color-gray;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-right: 10px !important;
+}
+
+.fa-times-circle {
+  color: $color-black;
+  position: relative;
+  top: -16px;
+  font-size: 20px;
+  float: right;
+  left: 20px;
+  cursor: pointer;
+}

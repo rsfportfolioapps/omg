@@ -1,0 +1,63 @@
+<div fxLayout="column">
+  <div class="c-mat-table" fxFlex *ngIf="dataSource">
+    <div class="c-mat-row" *ngFor="let row of dataSource; let idx = index">
+
+      <div class="c-mat-cell date" fxFlex="15" fxLayoutAlign="center center">
+        {{ (row.uploadDate | date:'MM-dd-yyyy' )}}
+      </div>
+
+      <div class="c-mat-cell filename" fxFlex="35" matTooltip="Click to enlarge" fxLayoutAlign="start center"
+           (click)="onShowImageModal(idx)">
+        <span class="h-underline">{{ (row.fileName )}}</span>
+      </div>
+
+      <div class="c-mat-cell" fxFlex="15" fxLayoutAlign="center center">
+        <span>{{ (row.category )}}</span>
+      </div>
+
+      <div class="c-mat-cell" fxFlex="15" fxLayoutAlign="center center">
+        <span>{{ (row.language )}}</span>
+      </div>
+
+      <div class="c-mat-cell" [ngStyle]="{'color': row.status === 'Declined' ? 'red' : 'black'}" fxFlex="10"
+           fxLayoutAlign="start center" *ngIf="type === 'inbox'">
+        <span>{{ (row.status )}}</span>
+      </div>
+
+      <div class="c-mat-cell" [ngStyle]="{'color': row.priority === 'High' ? 'red' : 'black'}" fxFlex="10"
+           fxLayoutAlign="start center" *ngIf="type === 'inbox'">
+        <span>{{ (row.priority )}}</span>
+      </div>
+
+      <div class="c-mat-cell tags" fxFlex="20" fxLayoutAlign="start center" *ngIf="type === 'history'">
+        <span>{{ (row.tags )}}</span>
+      </div>
+
+      <div class="c-mat-cell" fxFlex="10" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <div><img [src]="(row.fileUrl)"></div>
+        <i class="far fa-eye view" matTooltip="View" (click)="viewDetails(row.resourceId)"></i>
+        <app-share-link-dialog *ngIf="type === 'history' && isShowShareDialog[idx]"
+                               [shareDialog]="isShowShareDialog[idx]" [shareLink]="row.fileUrl" [index]="idx"
+                               (shareDialogEmitter)="onShowShareDialog(idx)">
+        </app-share-link-dialog>
+        <i class="fas fa-paper-plane share" *ngIf="type === 'history'" matTooltip="Download"
+           (click)="onShowShareDialog(idx)"></i>
+        <i class="fas fa-envelope share" *ngIf="type === 'inbox'" matTooltip="Message"></i>
+        <i class="fas fa-trash-alt delete" matTooltip="Delete"
+           (click)="openConfirmDeleteDialog(row.fileName, row.resourceId)"></i>
+      </div>
+
+      <app-enlarge-image [showModal]="isShowImageArray[idx]" [imageData]="row.fileUrl"
+                         (showModalEmitter)="onShowImageModal(idx)">
+      </app-enlarge-image>
+
+    </div>
+  </div>
+
+</div>
+
+<div fxFlexFill>
+  <mat-paginator #paginator [pageSize]="pageSize" [length]="totalSize" [hidePageSize]="true"
+                 [showFirstLastButtons]="true" [pageIndex]="currentPage" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

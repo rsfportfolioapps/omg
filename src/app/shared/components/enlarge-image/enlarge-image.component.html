@@ -1,0 +1,6 @@
+<div id="myModal" class="modal" [ngClass]="{ show: showModal == true }">
+  <span class="close" (click)="toggleModal()">&times;</span>
+  <div class="modal-content">
+    <img [src]="imageData?.imgData || imageData">
+  </div>
+</div>

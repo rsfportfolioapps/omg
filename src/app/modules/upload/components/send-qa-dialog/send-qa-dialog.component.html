@@ -1,0 +1,23 @@
+<div fxLayout="column">
+  <div mat-dialog-content fxLayout="column">
+    <form novalidate [formGroup]="sendQAForm" fxFlex>
+      <div fxLayout="column">
+        <app-dropdown-multi-select-search fxFlex *ngIf="qAs" [dataList]="qAs" [placeHolder]="'Select QA'"
+                                          [multiSelectDropdown]="false" [searchItem]="true"
+                                          (selectedItemEmitted)="handleSelectQAChange($event)">
+        </app-dropdown-multi-select-search>
+        <mat-error *ngIf="hasError">Please select QA!</mat-error>
+      </div>
+
+      <div fxLayout="column">
+        <mat-form-field fxFlex>
+          <textarea matInput formControlName="note" name="note" placeholder="Enter Note"></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions fxLayoutAlign="end center">
+    <button class="btn-cancel" mat-button type="button" (click)="onCancel()" fxLayoutAlign="center">Cancel</button>
+    <button class="btn-send" mat-button type="button" (click)="onSend()" fxLayoutAlign="center">Send</button>
+  </div>
+</div>

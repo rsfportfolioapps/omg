@@ -1,0 +1,14 @@
+@import "src/styleguide/shared.scss";
+
+:host ::ng-deep {
+  font-size: 14px;
+}
+
+.btn-send {
+  @include btn-primary;
+}
+
+.btn-cancel {
+  @include btn-default;
+  margin-right: 15px;
+}

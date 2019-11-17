@@ -1,0 +1,17 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div fxLayout="column">
+  <div mat-dialog-content fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="column" class="ta-right" (click)="onClose()">
+        <i class="fas fa-times"></i>
+    </div>
+    <div fxLayout="column">
+      <mat-form-field fxFlex>
+        <input matInput  name="note" placeholder="Share Link" [value]="shareLink" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions fxLayoutAlign="start center">
+    <button class="btn-cancel" mat-button type="button" [appCopyToClipboard]="shareLink" (copied)="onCopySucess($event)">Copy Link</button>
+    <a class="btn-download" mat-button  [href]="shareLink" target="_blank">Download</a>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div fxLayout="column">
+    <div mat-dialog-content class="upload-file-container" fxLayout="column">
+        <div fxLayout="column" class="ta-right" (click)="dialogRef.close()">
+            <i class="fas fa-times close-icon"></i>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px" appDragDrop (onFileDropped)="onFileUpload($event)">
+            <div fxLayout="column" fxFlex>
+                <img src="/assets/icons/upload_icon.svg" class="upload-icon">
+            </div>
+
+            <p class="drag-drop-text">Drag and drop or <span class="link" (click)="uploadSource.click()">click here.</span></p>
+            <input #uploadSource hidden type="file" (change)="onFileChangeEvent($event)" accept=".png,.jpg,.zip" multiple />
+        </div>
+    </div>
+</div>

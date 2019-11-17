@@ -1,0 +1,13 @@
+@import "src/styleguide/shared";
+
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked {
+  background: $color-primary;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $color-primary;
+}

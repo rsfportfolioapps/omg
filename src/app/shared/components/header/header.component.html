@@ -1,0 +1,18 @@
+<mat-toolbar [class.mat-elevation-z3]="true">
+  <mat-toolbar-row fxFlex>
+    <div fxFlex="33.33" fxLayoutAlign="start">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <img src="/assets/icons/burger-icon.svg" alt="Menu">
+      </button>
+    </div>
+    <div fxFlex="33.33" fxLayoutAlign="center">
+      <img alt="logo" height="24" src="/assets/img/login-logo.png">
+    </div>
+    <div fxFlex="33.33" fxLayoutAlign="end">
+      <p class="user" fxHide.lt-sm="true">Maxel Gee Aparri, Designer&nbsp;<img alt="" class="flag" src="/assets/icons/uk_flag_icon_32.png"></p>
+      <button mat-icon-button fxHide.gt-xs="true">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

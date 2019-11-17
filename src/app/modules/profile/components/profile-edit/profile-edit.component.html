@@ -1,0 +1,204 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div class="register-container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <app-card [title]="'Edit profile'" [styles]="styles">
+    <section class="app-card-content">
+      <form novalidate [formGroup]="profileForm" (ngSubmit)="onSubmit()" fxFlex fxLayoutGap="20px">
+        <div fxFlex="25">
+          <app-image-upload appendTo="body" tooltipPosition="bottom" (onChangeEvent)="handleImageChange($event)"
+                            [imageDisplayUrl]="imageDisplayUrl" [parentForm]="profileForm"></app-image-upload>
+        </div>
+        <div fxFlex fxLayout="column" fxLayoutGap="10px" class="mt-20">
+          <div fxLayout="row" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+              <input matInput type="text" formControlName="firstName" name="firstName" placeholder="First name"
+                     appMaxLength="50">
+              <mat-error *ngIf="!profileForm.get('firstName').valid">Name is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput type="text" formControlName="middleName" name="middleName" placeholder="Middle name"
+                     appMaxLength="50">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-md="column" class="mb-20" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+              <input matInput type="text" formControlName="lastName" name="lastName" placeholder="Surname"
+                     appMaxLength="50">
+              <mat-error *ngIf="!profileForm.get('lastName').valid">Surname is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput [matDatepicker]="picker" formControlName="birthDate" name="birthDate"
+                     placeholder="Birthdate" readonly>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+              <mat-select formControlName="position" name="position" placeholder="Position">
+                <mat-option *ngFor="let item of (profile$ | async)?.positions" [value]="item.key">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="!profileForm.get('position').valid">Position is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <mat-select formControlName="gender" name="gender" placeholder="Gender">
+                <mat-option *ngFor="let item of (profile$ | async)?.genders" [value]="item.key">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="!profileForm.get('position').valid">Position is required!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+              <mat-select formControlName="office" name="office" placeholder="Office">
+                <mat-option *ngFor="let item of (register$ | async)?.offices" [value]="item.key">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="!profileForm.get('office').valid">Office is required!</mat-error>
+            </mat-form-field>
+
+            <mat-form-field fxFlex>
+              <input matInput formControlName="email" name="email" type="email" placeholder="Email" appMaxLength="100">
+              <mat-error *ngIf="!profileForm.get('email').valid">Email is invalid!</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+              <mat-select formControlName="language" name="language" placeholder="Language">
+                <mat-option *ngFor="let item of (register$ | async)?.languages" [value]="item.key">
+                  {{item.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <app-dropdown-multi-select-search fxFlex *ngIf="(profile$ | async)?.skills"
+                                              [dataList]="(profile$ | async)?.skills" [placeHolder]="'Skills'"
+                                              [defaultValue]="profileForm.get('skills').value"
+                                              [multiSelectDropdown]="true" [searchItem]="true"
+                                              (selectedItemEmitted)="handleSelectChange($event)">
+            </app-dropdown-multi-select-search>
+
+          </div>
+
+          <div fxLayoutAlign="flex-end" class="btn-container">
+            <button type="button" class="btn-cancel" routerLink="/profile" mat-button>Cancel</button>
+            <button type="submit" class="btn-register" mat-button>Update</button>
+          </div>
+
+        </div>
+
+      </form>
+    </section>
+  </app-card>
+  <!--<mat-card class="register-card">-->
+    <!--<app-ribbon-title [title]="'Edit profile'"></app-ribbon-title>-->
+    <!--<mat-card-content>-->
+      <!--<form novalidate [formGroup]="profileForm" (ngSubmit)="onSubmit()" fxFlex fxLayoutGap="20px">-->
+        <!--<div fxFlex="25">-->
+          <!--<app-image-upload appendTo="body" tooltipPosition="bottom" (onChangeEvent)="handleImageChange($event)"-->
+                            <!--[imageDisplayUrl]="imageDisplayUrl" [parentForm]="profileForm"></app-image-upload>-->
+        <!--</div>-->
+        <!--<div fxFlex fxLayout="column" fxLayoutGap="10px" class="mt-20">-->
+          <!--<div fxLayout="row" fxLayoutGap="20px">-->
+            <!--<mat-form-field fxFlex>-->
+              <!--<input matInput type="text" formControlName="firstName" name="firstName" placeholder="First name"-->
+                     <!--appMaxLength="50">-->
+              <!--<mat-error *ngIf="!profileForm.get('firstName').valid">Name is required!</mat-error>-->
+            <!--</mat-form-field>-->
+
+            <!--<mat-form-field fxFlex>-->
+              <!--<input matInput type="text" formControlName="middleName" name="middleName" placeholder="Middle name"-->
+                     <!--appMaxLength="50">-->
+            <!--</mat-form-field>-->
+          <!--</div>-->
+
+          <!--<div fxLayout="row" fxLayout.lt-md="column" class="mb-20" fxLayoutGap="20px">-->
+            <!--<mat-form-field fxFlex>-->
+              <!--<input matInput type="text" formControlName="lastName" name="lastName" placeholder="Surname"-->
+                     <!--appMaxLength="50">-->
+              <!--<mat-error *ngIf="!profileForm.get('lastName').valid">Surname is required!</mat-error>-->
+            <!--</mat-form-field>-->
+
+            <!--<mat-form-field fxFlex>-->
+              <!--<input matInput [matDatepicker]="picker" formControlName="birthDate" name="birthDate"-->
+                     <!--placeholder="Birthdate" readonly>-->
+              <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+              <!--<mat-datepicker #picker></mat-datepicker>-->
+            <!--</mat-form-field>-->
+          <!--</div>-->
+
+          <!--<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">-->
+            <!--<mat-form-field fxFlex>-->
+              <!--<mat-select formControlName="position" name="position" placeholder="Position">-->
+                <!--<mat-option *ngFor="let item of (profile$ | async)?.positions" [value]="item.key">-->
+                  <!--{{item.value}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+              <!--<mat-error *ngIf="!profileForm.get('position').valid">Position is required!</mat-error>-->
+            <!--</mat-form-field>-->
+
+            <!--<mat-form-field fxFlex>-->
+              <!--<mat-select formControlName="gender" name="gender" placeholder="Gender">-->
+                <!--<mat-option *ngFor="let item of (profile$ | async)?.genders" [value]="item.key">-->
+                  <!--{{item.value}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+              <!--<mat-error *ngIf="!profileForm.get('position').valid">Position is required!</mat-error>-->
+            <!--</mat-form-field>-->
+          <!--</div>-->
+
+          <!--<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">-->
+            <!--<mat-form-field fxFlex>-->
+              <!--<mat-select formControlName="office" name="office" placeholder="Office">-->
+                <!--<mat-option *ngFor="let item of (register$ | async)?.offices" [value]="item.key">-->
+                  <!--{{item.value}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+              <!--<mat-error *ngIf="!profileForm.get('office').valid">Office is required!</mat-error>-->
+            <!--</mat-form-field>-->
+
+            <!--<mat-form-field fxFlex>-->
+              <!--<input matInput formControlName="email" name="email" type="email" placeholder="Email" appMaxLength="100">-->
+              <!--<mat-error *ngIf="!profileForm.get('email').valid">Email is invalid!</mat-error>-->
+            <!--</mat-form-field>-->
+          <!--</div>-->
+
+          <!--<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20px">-->
+            <!--<mat-form-field fxFlex>-->
+              <!--<mat-select formControlName="language" name="language" placeholder="Language">-->
+                <!--<mat-option *ngFor="let item of (register$ | async)?.languages" [value]="item.key">-->
+                  <!--{{item.value}}-->
+                <!--</mat-option>-->
+              <!--</mat-select>-->
+            <!--</mat-form-field>-->
+
+            <!--<app-dropdown-multi-select-search fxFlex *ngIf="(profile$ | async)?.skills"-->
+                                              <!--[dataList]="(profile$ | async)?.skills" [placeHolder]="'Skills'"-->
+                                              <!--[defaultValue]="profileForm.get('skills').value"-->
+                                              <!--[multiSelectDropdown]="true" [searchItem]="true"-->
+                                              <!--(selectedItemEmitted)="handleSelectChange($event)">-->
+            <!--</app-dropdown-multi-select-search>-->
+
+          <!--</div>-->
+
+          <!--<div fxLayoutAlign="flex-end" class="btn-container">-->
+            <!--<button type="button" class="btn-cancel" routerLink="/profile" mat-button>Cancel</button>-->
+            <!--<button type="submit" class="btn-register" mat-button>Update</button>-->
+          <!--</div>-->
+
+        <!--</div>-->
+
+      <!--</form>-->
+    <!--</mat-card-content>-->
+  <!--</mat-card>-->
+</div>

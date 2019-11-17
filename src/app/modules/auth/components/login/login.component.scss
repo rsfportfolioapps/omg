@@ -1,0 +1,89 @@
+@import "src/styleguide/shared.scss";
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+form {
+  margin-top: 20px !important;
+  margin-bottom: 10px !important;
+}
+
+.checkbox { 
+  @include checkbox;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: $color-white;
+  background-color: $color-red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-default {
+  @include btn-default;
+
+  width: 120px;
+}
+
+.btn-login {
+  @include btn-primary;
+
+  width: 120px;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.lc {
+  @include card;
+  padding: 20px 89px;
+}
+
+.btn-forgot-password {
+  cursor: pointer;
+}
+
+.pass-link {
+  color: rgb(117,117,117);
+}
+
+.sign-up-link {
+  color: rgb(43,106,152);
+}
+
+:host ::ng-deep {
+  mat-card-title,
+  mat-card-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  mat-checkbox-label {
+    padding-top: 3px;
+  }
+
+  .mat-checkbox-label {
+    position: relative;
+    top: 1px;
+    color: $color-black-3;
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: $color-blue-3;
+  }
+
+}
+

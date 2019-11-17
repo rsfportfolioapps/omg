@@ -1,0 +1,64 @@
+<app-card [title]="'Upload History'" [styles]="styles">
+  <section class="app-card-content">
+    <div fxLayoutAlign="end center" fxFill class="reset-wrapper">
+      <span class="reset-filter" (click)="onResetFilter()">Reset Filter</span>
+    </div>
+
+    <!-- header table -->
+    <div class="c-mat-table">
+
+      <div class="c-mat-header-row table-header">
+        <div class="c-mat-header-cell" *ngFor="let column of columnsHeader" fxLayoutAlign="center center" fxFlex="{{column.size}}">
+          {{ column.display }}
+        </div>
+      </div>
+
+      <mat-progress-bar mode="indeterminate" *ngIf="(loadDataTable$ | async) ? false : true"></mat-progress-bar>
+
+      <div class="c-mat-header-row">
+
+        <div class="c-mat-header-cell filter date" fxFlex="15" fxLayoutAlign="center center">
+          <mat-form-field fxFlex>
+            <input #inputDateRange matInput ngxDaterangepickerMd [(ngModel)]="selected" placeholder="Choose date"
+                   (change)="onDateChange($event)" autocomplete="off"/>
+          </mat-form-field>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="35" fxLayoutAlign="center center">
+          <mat-form-field fxFlex>
+            <input matInput #inputSearchName placeholder="Search" (keyup)="onSearchName(inputSearchName.value)">
+          </mat-form-field>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="15" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.categories" [dataList]="filterData?.categories"
+                                            [placeHolder]="'Fitler'" [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectedItemEmitted)="onSelectCategoryChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="15" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.languages" [dataList]="filterData?.languages" [placeHolder]="'Fitler'"
+                                            [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectedItemEmitted)="onSelectLanguageChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="20" fxLayoutAlign="center center">
+          <app-dropdown-multi-select-search fxFlex *ngIf="filterData?.tags" [dataList]="filterData?.tags" [placeHolder]="'Fitler'"
+                                            [multiSelectDropdown]="true" [searchItem]="true"
+                                            (selectedItemEmitted)="onSelectTagChange($event.value)" [clearOption]="resetSelect$">
+          </app-dropdown-multi-select-search>
+        </div>
+
+        <div class="c-mat-header-cell filter" fxFlex="10" fxLayoutAlign="center center">
+          <button type="button" class="btn-primary" mat-button>Reset Filters</button>
+        </div>
+
+      </div>
+
+      <app-data-table *ngIf="loadDataTable$" [loadData]="loadDataTable$" [type]="'history'" (deleteItemEmitter)="onDeleteHistoryItem($event)"></app-data-table>
+
+    </div>
+  </section>
+</app-card>

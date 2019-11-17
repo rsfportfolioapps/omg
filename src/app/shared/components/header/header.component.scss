@@ -1,0 +1,33 @@
+@import "src/styleguide/shared";
+
+mat-toolbar {
+  background-color: $color-white;
+  min-height: 52px;
+  position: relative;
+  z-index: 999;
+
+  mat-toolbar-row {
+    height: 52px;
+
+    .user {
+      margin: 0;
+      color: black;
+      font-size: 12px;
+
+      img {
+        margin-left: 16px;
+        vertical-align: middle;
+      }
+    }
+
+    button:first-child {
+      &:focus {
+        outline: none !important;
+      }
+    }
+  }
+}
+
+:host ::ng-deep mat-toolbar mat-toolbar-row .mat-button-focus-overlay {
+  opacity: 0 !important;
+}

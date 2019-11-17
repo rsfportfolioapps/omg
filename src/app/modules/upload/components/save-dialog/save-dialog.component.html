@@ -1,0 +1,14 @@
+<div fxLayout="column">
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="column" class="ta-right" (click)="onClose()">
+          <i class="fas fa-times close-icon"></i>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center">
+       <h2>Upload successful!</h2>
+       <p>{{ file.fileName }} has been uploaded.</p>
+      </div>
+    </div>
+    <div mat-dialog-actions fxLayoutAlign="end center">
+      <button class="btn-ok" mat-button type="button" routerLink="/history" (click)="onConfirm()">OK</button>
+    </div>
+</div>

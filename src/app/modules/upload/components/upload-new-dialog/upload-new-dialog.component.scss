@@ -1,0 +1,33 @@
+@import "src/styleguide/shared.scss";
+
+.upload-file-container {
+    width: 100%;
+
+    .ta-right {
+        text-align: right;
+    
+        .close-icon {
+            font-size: 20px;
+            color: $color-black-1;
+            cursor: pointer;
+        }
+    }
+
+    .upload-icon {
+        height: 58px;
+        margin-top: 50px;
+    }
+      
+    .drag-drop-text { 
+        font-size: 14px;
+        color: $color-black-4;
+        margin-top: 4px;
+        margin-bottom: 50px;
+    
+        .link {
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}

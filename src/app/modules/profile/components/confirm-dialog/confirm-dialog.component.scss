@@ -1,0 +1,28 @@
+@import "src/styleguide/shared.scss";
+
+:host {
+  .btn-confirm {
+    @include btn-primary;
+    width: 100px;
+  }
+
+  .ta-right {
+    text-align: right;
+
+    .close-icon {
+      font-size: 20px;
+      color: $color-black-1;
+      cursor: pointer;
+    }
+  }
+
+  h2 {
+    font-size: 20px;
+    color: $color-primary;
+    margin-bottom: 40px;
+  }
+  
+  .mat-dialog-actions {
+    margin-bottom: 0;
+  }
+}

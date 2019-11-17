@@ -1,0 +1,20 @@
+@import "src/styleguide/shared";
+
+.image-container {
+  height: 160px;
+  width: 160px;
+  border-radius: 50%;
+  background: #707070;
+  border: thin solid #707070;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.btn-done {
+  @include btn-primary;
+}

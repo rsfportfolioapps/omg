@@ -1,0 +1,155 @@
+@import "src/styleguide/shared";
+
+app-card {
+  position: relative;
+}
+
+app-card,
+.app-card-content {
+  width: 100%;
+  padding: 23.4px 0 0 0;
+}
+
+.img-container {
+  height: 425px;
+  border-radius: 4px;
+  background-color: $color-black;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover .image-icon {
+    opacity: 1;
+  }
+}
+
+.on-close {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20.7px 22px;
+}
+
+.uploaded-image {
+  height: max-content;
+  max-height: 425px;
+  width: -webkit-fill-available;
+  min-width: auto;
+  max-width: fit-content;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-icon {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.btn-send {
+  @include btn-primary;
+}
+
+.btn-cancel {
+  @include btn-secondary;
+  margin-right: 14px;
+}
+
+.sources-container {
+  position: relative;
+}
+
+.enlarge {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+
+  img {
+    width: 12px;
+  }
+}
+
+.btn-source {
+  margin-right: 15px;
+}
+
+.img-source-ref {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 20px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.img-box {
+  position: relative;
+  max-height: 110px;
+  min-height: 110px;
+
+  img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .trash-icon {
+    width: 14px;
+    position: absolute;
+    bottom: 55px;
+    right: 35px;
+    cursor: pointer;
+  }
+
+  .text {
+    position: relative;
+
+    span {
+      z-index: 999;
+      position: absolute;
+      font-size: 10px;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.3);
+      font-family: Arial, sans-serif;
+      color: $color-white;
+      width: 100%;
+      bottom: 1px;
+      padding: 4px;
+      text-align: center;
+    }
+  }
+}
+
+.img-box:hover mat-icon {
+  display: block;
+}
+
+:host ::ng-deep {
+  mat-card {
+    min-height: 700px;
+    min-width: 1300px !important;
+  }
+
+  .mat-expansion-panel {
+    margin-bottom: 10px;
+  }
+
+  .mat-expansion-panel-header-description,
+  .mat-expansion-panel-header-title {
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,41 @@
+@import "src/styleguide/shared.scss";
+
+mat-card {
+  mat-card-content {
+    padding: 48.4px 57.5px 0 71px;
+  }
+}
+
+.register-card {
+  padding: 50px;
+  min-width: 950px;
+
+  .profile-img {
+    margin-top: 48.4px;
+  }
+
+  .mat-datepicker-toggle {
+    display: none;
+  }
+}
+
+.btn-container {
+  margin-top: 25px;
+}
+
+.btn-register {
+  @include btn-primary;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  @include btn-secondary;
+  margin-right: 14px;
+}

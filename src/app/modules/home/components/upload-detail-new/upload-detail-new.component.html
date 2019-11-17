@@ -1,0 +1,125 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div fxLayout="column" fxLayoutAlign="center center" fxFill>
+  <mat-card class="upload-new-card" style="margin-top: 182px !important;">
+    <app-ribbon-title [title]="'Files Uploaded'"></app-ribbon-title>
+    <mat-card-content>
+      <div fxLayout="row" fxLayoutGap="25px">
+
+        <div fxFlex="55" fxLayout="column" fxLayoutGap="15px">
+          <div fxLayout="row" fxLayoutAlign="center" class="img-container" appDragDrop (onFileDropped)="onFileUpload($event)">
+            <img [src]="mainFileImage?.imgData" class="uploaded-image" fxFlex (click)="fileInput.click()"/>
+            <input hidden type="file" #fileInput (change)="onFileUpload($event.target.files)" accept=".png,.jpg,.zip">
+          </div>
+          <div fxLayout="row" class="sources-container">
+            <button type="button" class="btn-add btn-source" mat-button (click)="uploadSource.click()">Add source</button>
+            <span class="enlarge" (click)="onShowImageModal()"><img src="/assets/icons/enlarge_icon.svg" > Enlarge</span>
+            <input #uploadSource hidden type="file" (change)="onFileChangeEvent($event)" accept=".png,.jpg,.zip" multiple/>
+          </div>
+          <div fxLayout="row wrap">
+            <div class="img-box" *ngFor="let file of soucreFileListDisplay" >
+              <img [src]="file.type != 'zip'? file.file:'/assets/icons/zip.png'">
+              <div class="text">
+                <span>{{ file.name }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div fxFlex="45">
+          <form novalidate #uploadFormData [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  General Information
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div fxLayout="column" fxLayoutGap="10px">
+                <div fxLayout="row" class="mt-20">
+                  <mat-form-field fxFlex>
+                    <input matInput type="text" formControlName="fileName" name="fileName" placeholder="File name">
+                    <mat-error *ngIf="!uploadForm.get('fileName').valid">File name is required!</mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row">
+                  <mat-form-field fxFlex>
+                    <input matInput type="text" formControlName="description" name="description" placeholder="File description">
+                  </mat-form-field>
+                </div>
+                <div fxLayout="row" fxLayoutGap="20px" class="mb-10">
+                  <mat-form-field fxFlex>
+                    <mat-select formControlName="languageId" name="languageId" placeholder="Language">
+                      <mat-option *ngFor="let item of (uploadForm$ | async)?.languages" [value]="item.key">
+                        {{item.value}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!uploadForm.get('languageId').valid">Language is required!</mat-error>
+                  </mat-form-field>
+                  <app-dropdown-multi-select-search fxFlex *ngIf="(uploadForm$ | async)?.categories"
+                                                [dataList]="(uploadForm$ | async)?.categories" [placeHolder]="'Category'"
+                                                [multiSelectDropdown]="false" [searchItem]="true"
+                                                (selectedItemEmitted)="onSelectCategoryChange($event)">
+                  </app-dropdown-multi-select-search>
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Discoverability
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div fxLayout="row" fxLayoutGap="15px" class="mt-20 mb-10">
+                <app-dropdown-multi-select-search fxFlex="45" *ngIf="(uploadForm$ | async)?.tags"
+                                                [dataList]="(uploadForm$ | async)?.tags" [placeHolder]="'Tags'"
+                                                [multiSelectDropdown]="true" [searchItem]="true"
+                                                (selectedItemEmitted)="onSelectTagChange($event)">
+                </app-dropdown-multi-select-search>
+                <mat-form-field fxFlex="45">
+                  <input matInput type="text" name="tags" placeholder="Enter tag" #newTag>
+                </mat-form-field>
+                <button fxFlex="10" type="button" class="btn-add" mat-button (click)="onAddNewTag()">Add</button>
+              </div>
+              <div fxLayout="row wrap" fxLayoutGap="15px">
+                <div *ngFor="let item of selectedTagItems" class="tags">
+                  {{item.value}}
+                </div>
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Priority for checking
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div fxLayout="row" class="mt-20">
+                <mat-form-field fxFlex="30">
+                  <mat-select formControlName="priority" name="priority" placeholder="Priority">
+                    <mat-option *ngFor="let item of (uploadForm$ | async)?.priorities" [value]="item.key">
+                      {{item.value}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="!uploadForm.get('priority').valid">Priority is required!</mat-error>
+                </mat-form-field>
+              </div>
+              <div  fxLayout="row" fxLayoutAlign="flex-end" class="mt-20">
+                <button type="button" class="btn-cancel" routerLink="/home" mat-button>Cancel</button>
+                <button type="submit" class="btn-add" mat-button>Save</button>
+              </div>
+            </mat-expansion-panel>
+          </form>
+
+          <div fxLayout="row" fxLayoutAlign="flex-end"  class="mt-20">
+            <button type="button" class="btn-add mr-20" mat-button (click)="openSendQADialog()">Send to QA</button>
+          </div>
+
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+<app-enlarge-image [showModal]="isShowImageModal"
+                   [imageData]="this.mainFileImage"
+                   (showModalEmitter)="onShowImageModal()">
+</app-enlarge-image>

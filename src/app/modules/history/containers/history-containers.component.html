@@ -1,0 +1,8 @@
+<div class="history-container" fxLayout="column" fxLayoutAlign="center center" fxFill>
+
+  <app-history *ngIf="loadHistoryData" [loadHistoryData]="loadHistoryData" 
+                (loadHistoryEmitter)="handleLoadHistoryEvent($event)"
+                (deleteHistoryEmitter) ="handleDeleteHistoryEvent($event)">
+  </app-history>
+
+</div>

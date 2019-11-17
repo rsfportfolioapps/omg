@@ -1,0 +1,8 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div fxLayout="column" fxLayoutGap="15px">
+    <div fxLayoutAlign="end"><i class="fas fa-times" matTooltip="Close" (click)="toggleShareDialog(index)"></i></div>
+    <mat-form-field fxLayoutGap="20">
+        <input fxFlex="80%" matInput  name="note" placeholder="Share Link" [value]="shareLink" (copied)="onCopySucess($event)" />
+        <button class="btn-copy" mat-button type="button">Copy Link</button>
+    </mat-form-field>
+</div>

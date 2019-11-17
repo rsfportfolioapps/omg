@@ -1,0 +1,48 @@
+@mixin btn {
+  height: 40px;
+  color: $color-white;
+  font-size: 14px;
+  box-shadow: none;
+
+  &:focus:not(:disabled),
+  &:hover:not(:disabled) {
+    outline: 0;
+  }
+  &:disabled {
+    opacity: 0.7;
+  }
+  &:hover:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-default {
+  @include btn;
+}
+
+@mixin btn-primary {
+  @include btn;
+
+  @include background-gradient(horizontal, rgb(23, 104, 164), rgb(108, 177, 223));
+}
+
+@mixin btn-secondary {
+  @include btn;
+
+  background-color: $color-secondary;
+}
+
+@mixin btn-flat-blue {
+  @include btn;
+
+  background-color: $color-blue-1;
+  border: 1px solid $color-black-2;
+  border-radius: 0;
+}
+
+@mixin background-gradient($orientation, $color-1, $color-2) {
+  @if $orientation==horizontal {
+    background: -webkit-gradient(linear, left top, right top, from($color-1), to($color-2));
+    background: linear-gradient(to right, $color-1 0%, $color-2 100%);
+  }
+}

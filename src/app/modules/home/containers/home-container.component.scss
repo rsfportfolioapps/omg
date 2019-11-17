@@ -1,0 +1,25 @@
+@import "src/styleguide/shared";
+
+mat-sidenav {
+  overflow-y: visible;
+  padding: 32px;
+  .close-sidenav {
+    background-color: #fff;
+    padding: 4px;
+    position: absolute;
+    right: -48px;
+    top: 52px;
+  }
+  mat-list {
+    margin-top: 72px;
+    min-width: 276px;
+    mat-list-item {
+      font-size: 13px;
+    }
+  }
+}
+
+.home-container {
+  background: url('/assets/img/background.png') no-repeat center;
+  background-size: cover;
+}

@@ -1,0 +1,45 @@
+<!--<section fxFill>-->
+  <!--<app-header [sidenav]="sidenav"></app-header>-->
+  <!--<mat-sidenav-container fxFill [hasBackdrop]="false">-->
+    <!--<mat-sidenav mode="over"-->
+                 <!--#sidenav-->
+                 <!--[(opened)]="opened"-->
+                 <!--(opened)="events.push('open!')"-->
+                 <!--(closed)="events.push('close!')">-->
+      <!--<span class="close-sidenav" *ngIf="opened">-->
+        <!--<button mat-icon-button (click)="sidenav.toggle()">-->
+          <!--<mat-icon>clear</mat-icon>-->
+        <!--</button>-->
+      <!--</span>-->
+      <!--<mat-list>-->
+        <!--<mat-list-item [routerLink]="['/upload']">Upload</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item [routerLink]="['/inbox']">Inbox</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item [routerLink]="['/search']">Search</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item [routerLink]="['/history']">History</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item [routerLink]="['/profile']">Profile</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+        <!--<mat-list-item>Logout</mat-list-item>-->
+        <!--<mat-divider></mat-divider>-->
+      <!--</mat-list>-->
+    <!--</mat-sidenav>-->
+
+    <!--<mat-sidenav-content>-->
+      <!--<div class="home-container"-->
+           <!--fxFill-->
+           <!--fxLayout="column"-->
+           <!--fxLayoutAlign="center center">-->
+        <!--<app-upload></app-upload>-->
+      <!--</div>-->
+    <!--</mat-sidenav-content>-->
+  <!--</mat-sidenav-container>-->
+<!--</section>-->
+<div class="home-container"
+     fxFill
+     fxLayout="column"
+     fxLayoutAlign="center center">
+  <app-upload></app-upload>
+</div>

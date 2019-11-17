@@ -1,0 +1,17 @@
+@import "src/styleguide/shared";
+
+:host ::ng-deep {
+  .ui-toast-message-success .ui-toast-message-content {
+    background-color: $color-secondary;
+    color: $color-white;
+  }
+
+  .ui-toast-message-error .ui-toast-message-content {
+    background-color: $color-red-1;
+    color: $color-white;
+  }
+
+  .ui-toast .ui-toast-message .ui-toast-close-icon {
+    color: $color-white !important;
+  }
+}

@@ -1,0 +1,15 @@
+<div fxLayout="column">
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="column" class="ta-right" (click)="onClose()">
+            <i class="fas fa-times close-icon"></i>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <h2>File Delete</h2>
+            <p>Are you sure you want to delete {{ fileName }}?</p>
+        </div>
+    </div>
+    <div mat-dialog-actions fxLayoutAlign="end center">
+        <button class="btn-cancel" mat-button type="button" (click)="onClose()">Cancel</button>
+        <button class="btn-confirm" mat-button type="button" (click)="onConfirm()">OK</button>
+    </div>
+</div>

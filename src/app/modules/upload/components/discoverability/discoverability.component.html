@@ -1,0 +1,18 @@
+<app-card-with-header sidebar-title="Discoverability">
+  <div [formGroup]="form" fxLayout="row" fxLayoutGap="15px" class="mt-20 mb-10">
+    <app-dropdown-multi-select-search #multiSelect fxFlex="45" *ngIf="tags" [dataList]="tags"
+                                      [placeHolder]="'Tags'" [selectedItems]="selectedItems" [multiSelectDropdown]="true" [searchItem]="true"
+                                      (selectedItemEmitted)="onSelectTagChange($event.value)" >
+    </app-dropdown-multi-select-search>
+    <mat-form-field fxFlex="45">
+      <input matInput type="text" name="tags"  placeholder="Enter tag" #tagInput>
+    </mat-form-field>
+    <button fxFlex="10" type="button" class="btn-add"  mat-button (click)="AddTag(tagInput.value)">Add</button>
+  </div>
+  <div class="tag-container" fxLayout="row wrap" fxLayoutGap="15px">
+    <div *ngFor="let tag of selectedItems" class="tag-chip">
+      <i (click)="onRemoveTag(tag)" class="fas fa-times-circle"></i>
+      <span>{{tag.value}}</span>
+    </div>
+  </div>
+</app-card-with-header>

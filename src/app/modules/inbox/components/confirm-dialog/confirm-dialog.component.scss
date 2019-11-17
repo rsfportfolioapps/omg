@@ -1,0 +1,38 @@
+@import "src/styleguide/shared.scss";
+
+:host ::ng-deep {
+  font-size: 14px;
+}
+
+.btn-confirm {
+  @include btn-primary;
+}
+
+.btn-cancel {
+  @include btn-default;
+  margin-right: 15px;
+}
+
+.ta-center {
+  text-align: center;
+}
+
+.ta-right {
+  text-align: right;
+}
+
+.fas {
+  font-size: 20px;
+  color: $color-black-1;
+  cursor: pointer;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  color: $color-primary
+}
+
+p {
+  margin-bottom: 40px;
+}

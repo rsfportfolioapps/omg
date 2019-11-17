@@ -1,0 +1,13 @@
+<div fxLayout="column">
+    <div mat-dialog-content fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="column" class="ta-right" (click)="onClose()">
+            <i class="fas fa-times close-icon"></i>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <h2>Update Successful!</h2>
+        </div>
+    </div>
+    <div mat-dialog-actions fxLayoutAlign="end center">
+        <button class="btn-confirm" mat-button type="button" (click)="onClose()">OK</button>
+    </div>
+</div>

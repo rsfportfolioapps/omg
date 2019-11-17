@@ -1,0 +1,19 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<section class="home-container">
+  <app-card
+    [title]="'Upload'"
+    [styles]="styles">
+    <section class="app-card-content">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px" class="upload-file-container" appDragDrop
+           (onFileDropped)="onFileUpload($event)">
+        <div fxLayout="column" fxFlex>
+          <img src="/assets/icons/upload_icon.svg" class="upload-icon">
+        </div>
+
+        <p class="drag-drop-text">Drag and drop or <span class="link" (click)="fileInput.click()">click here</span><br>Upload only one main image</p>
+        <input hidden type="file" #fileInput (change)="onFileUpload($event.target.files)" accept=".png,.jpg">
+      </div>
+    </section>
+  </app-card>
+</section>
+

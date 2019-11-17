@@ -1,0 +1,27 @@
+@import "src/styleguide/shared.scss";
+
+.btn-ok {
+  @include btn-primary;
+  font-weight: 700;
+}
+
+.ta-right {
+  text-align: right;
+}
+
+.close-icon {
+  font-size: 20px;
+  color: $color-black-1;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-primary
+}
+
+p {
+  margin-bottom: 40px;
+  font-size: 15px;
+}

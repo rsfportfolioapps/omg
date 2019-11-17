@@ -1,0 +1,29 @@
+{
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "kebab-case"
+    ],
+
+    // Parameters should be less than 10.
+    "parameters-max-number": [ true, 10 ],
+
+    // If/else/switch should be less than 10.
+    "cognitive-complexity": [ true, 10 ],
+
+    // Maximum number of lines per function is 100.
+    "no-big-function": [ true, 100 ],
+
+    // String used 5 times is not allowed.
+    "no-duplicate-string": [ true, 5 ]
+  }
+}

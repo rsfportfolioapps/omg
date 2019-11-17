@@ -1,0 +1,90 @@
+@import "src/styleguide/shared";
+
+:host ::ng-deep {
+  .ui-widget-overlay {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .mat-progress-spinner circle,
+  .mat-spinner circle {
+    stroke: $color-blue !important;
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  .mat-drawer:not(.mat-drawer-side) {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+mat-sidenav {
+  overflow-y: visible;
+  padding: 32px;
+  top: 52px;
+
+  .close-sidenav {
+    background-color: $color-white;
+    padding: 4px;
+    position: absolute;
+    right: -48px;
+    top: 0;
+    box-shadow: 2px 0 6px -5px rgb(52,58,64) inset;
+  }
+  mat-list {
+    margin-top: 72px;
+    min-width: 276px;
+    mat-list-item {
+      font-size: 14px;
+      border-radius: 2px;
+      color: $color-black-0;
+
+      &:focus,
+      &:hover {
+        cursor: pointer;
+        outline: none;
+        background-color: $color-gray-1;
+      }
+
+      &.active {
+        background-color: $color-primary;
+        color: $color-white;
+        border-color: $color-primary;
+      }
+    }
+  }
+}
+
+mat-sidenav-content {
+  app-header {
+    width: 100%;
+  }
+
+  .main-content {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    overflow-y: auto;
+  }
+}
+
+.main {
+  background: url("/assets/img/background.png") no-repeat center;
+  background-size: cover;
+}
+
+:host ::ng-deep mat-sidenav-content .main-content router-outlet + .ng-star-inserted {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}
+
+:host ::ng-deep mat-sidenav .close-sidenav .mat-button-focus-overlay {
+  opacity: 0 !important;
+}
+
+:host ::ng-deep mat-sidenav .close-sidenav button:focus {
+  outline: none !important;
+}

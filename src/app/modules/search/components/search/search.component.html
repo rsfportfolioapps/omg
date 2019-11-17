@@ -1,0 +1,58 @@
+<section class="home-container">
+  <app-card [title]="'Search'">
+    <div class="app-card-content">
+      <div *ngIf="(searchForm$ | async)" fxLayout="column" fxFlexFill fxLayoutGap="20px" class="mt-3">
+
+        <div>
+          <mat-radio-group aria-label="Select an option" [(ngModel)]="searchType">
+            <mat-radio-button value="OwnPortfolio" class="mr-3">Own portfolio</mat-radio-button>
+            <mat-radio-button value="EntireDatabase">Entire database</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="20px">
+          <div fxLayout="column" fxFlex="50">
+            <mat-form-field>
+              <input #inputDateRange matInput ngxDaterangepickerMd (change)="onDateChange($event)"
+                     placeholder="Upload date" autocomplete="off" [(ngModel)]="selected" readonly />
+            </mat-form-field>
+
+            <app-dropdown-multi-select-search fxFlex="45" *ngIf="(searchForm$ | async)?.categories"
+                                              [dataList]="(searchForm$ | async)?.categories" [placeHolder]="'Category'"
+                                              [multiSelectDropdown]="false" [searchItem]="true"
+                                              (selectedItemEmitted)="handleSelectChange($event, 'category')">
+            </app-dropdown-multi-select-search>
+
+            <mat-form-field fxFlex="45">
+              <input matInput type="text" name="name" placeholder="Name" [(ngModel)]="name">
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="column" fxFlex="50">
+            <app-dropdown-multi-select-search fxFlex="45" *ngIf="(searchForm$ | async)?.designers"
+                                              [dataList]="(searchForm$ | async)?.designers" [placeHolder]="'Designer'"
+                                              [multiSelectDropdown]="false" [searchItem]="true"
+                                              (selectedItemEmitted)="handleSelectChange($event, 'assignedTo')">
+            </app-dropdown-multi-select-search>
+
+            <app-dropdown-multi-select-search fxFlex="45" *ngIf="(searchForm$ | async)?.languages"
+                                              [dataList]="(searchForm$ | async)?.languages" [placeHolder]="'Language'"
+                                              [multiSelectDropdown]="false" [searchItem]="true"
+                                              (selectedItemEmitted)="handleSelectChange($event, 'languages')">
+            </app-dropdown-multi-select-search>
+
+            <app-dropdown-multi-select-search fxFlex="45" *ngIf="(searchForm$ | async)?.tags"
+                                              [dataList]="(searchForm$ | async)?.tags" [placeHolder]="'Tags'"
+                                              [multiSelectDropdown]="true" [searchItem]="true"
+                                              (selectedItemEmitted)="onSelectTagChange($event)">
+            </app-dropdown-multi-select-search>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <button type="submit" class="btn btn-blue" mat-button (click)="onSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+  </app-card>
+</section>

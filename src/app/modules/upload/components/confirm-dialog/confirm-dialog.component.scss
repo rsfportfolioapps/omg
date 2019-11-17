@@ -1,0 +1,31 @@
+@import "src/styleguide/shared.scss";
+
+.btn-confirm {
+  @include btn-primary;
+  width: 100px;
+}
+
+.btn-cancel {
+  @include btn-secondary;
+  margin-right: 15px;
+  width: 100px;
+}
+
+.ta-right {
+  text-align: right;
+}
+
+.close-icon {
+  font-size: 20px;
+  color: $color-black-1;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 20px;
+  color: $color-primary
+}
+
+p {
+  margin-bottom: 40px;
+}

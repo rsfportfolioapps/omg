@@ -1,0 +1,14 @@
+:host {
+    display: block;
+    border: 1px solid #cccccc;
+    border-top: 0;
+
+    .header {
+        background-color: #0c459e;
+        color: #fff;
+    }
+
+    .content, .header {
+        padding: 8px 20px;
+    }
+}

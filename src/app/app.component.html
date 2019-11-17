@@ -1,0 +1,36 @@
+<section fxFill>
+  <mat-sidenav-container fxFill [hasBackdrop]="false">
+    <mat-sidenav mode="over"
+                 #sidenav
+                 [(opened)]="opened"
+                 (opened)="events.push('open!')"
+                 (closed)="events.push('close!')">
+      <span class="close-sidenav">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </span>
+      <mat-list>
+        <mat-list-item [routerLink]="['/upload']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">Upload</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/inbox']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">Inbox</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/search']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">Search</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/history']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">History</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item [routerLink]="['/profile']" [routerLinkActive]="['active']" (click)="sidenav.toggle()">Profile</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item (click)="onLogout(sidenav)">Logout</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFill fxLayout="column" fxLayoutAlign="center center">
+      <app-header [sidenav]="sidenav" *ngIf="(isLoggedIn$ | async)"></app-header>
+      <div class="main-content" [ngClass]="{'main': !nbg}" fxLayoutAlign="center center">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>

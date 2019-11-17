@@ -1,0 +1,52 @@
+<section class="home-container" *ngIf="me">
+  <app-card [title]="'Profile'" [styles]="styles">
+    <div class="app-card-content">
+      <div fxFlex="30" fxLayoutAlign="center start">
+        <img class="prof-pic rounded-circle" src="{{ me['profilePicture'] && me['profilePicture']['absoluteUri']}}">
+      </div>
+      <div fxFlex class="profile-info">
+        <div class="main-info">
+          <h5>{{ me['firstName']+' '+me['lastName'] }}</h5>
+          <p class="text-primary">{{ me['position'] && me['position']['value'] }}</p>
+        </div>
+
+        <mat-divider></mat-divider>
+        <div class="profile-details">
+          <div class="row mb-2">
+            <div class="col-3 font-weight-bolder">Work started</div>
+            <div class="col-9">{{ me['workStarted'] }}</div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-3 font-weight-bolder">Birth date</div>
+            <div class="col-9">{{ me['birthDate'] }}</div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-3 font-weight-bolder">Office</div>
+            <div class="col-9">{{ me['office'] && me['office']['value'] }}</div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-3 font-weight-bolder">Email</div>
+            <div class="col-9">{{ me['email'] }}</div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="skills">
+          <div class="row">
+            <div class="col-3 font-weight-bolder">Skills</div>
+            <div class="col-9">
+              <span *ngFor="let skill of me['skills']"> {{ skill['label'] }} </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-right mt-5">
+          <button class="btn-primary mr-2" mat-button [routerLink]="['password']">Change Password</button>
+          <button class="btn-primary" mat-button [routerLink]="['/profile/edit']">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+  </app-card>
+</section>

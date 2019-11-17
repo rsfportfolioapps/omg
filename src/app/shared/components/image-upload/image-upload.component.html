@@ -1,0 +1,19 @@
+<div class="row upload-container">
+  <div class="image-container" pTooltip="Click to upload" tooltipPosition="bottom" (click)="imageUpload.click()">
+    <img *ngIf="croppedImage || imageDisplayUrl" [src]="croppedImage ? croppedImage : imageDisplayUrl"
+         class="uploaded-image" />
+  </div>
+  <input #imageUpload hidden type="file" (change)="onFileChangeEvent($event)" />
+</div>
+
+<p-dialog header="Image Cropper" [(visible)]="showCroppingDialog" positionTop="20" [responsive]="true" showEffect="fade"
+          responsive="true" [style]="{width: '300px', height: '200px'}">
+
+  <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [resizeToWidth]="150"
+                 [resizeToHeight]="150" [maintainAspectRatio]="true" format="png"
+                 (imageCropped)="onImageCropped($event)"></image-cropper>
+
+  <p-footer>
+    <button type="button" class="btn btn-done" (click)="showCroppingDialog = false" mat-button>Done</button>
+  </p-footer>
+</p-dialog>

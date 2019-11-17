@@ -1,0 +1,39 @@
+<app-toast [trigger]="toastTrigger$"></app-toast>
+<div fxLayout="column" fxLayoutGap="20px">
+  <div fxLayoutAlign="center center">
+    <img src="assets/img/login-logo.png" />
+  </div>
+  <mat-card class="lc">
+    <mat-card-content>
+      <form novalidate [formGroup]="loginForm" fxLayout="column" (ngSubmit)="onSubmit()">
+        <div fxLayout="column" fxLayoutGap="15px">
+          <mat-form-field floatLabel="never" hideRequiredMarker>
+            <input type="text" matInput formControlName="username" name="username" placeholder="Username" maxlength="50"
+                   required>
+            <mat-error>{{getErrorMessage('username')}}</mat-error>
+          </mat-form-field>
+          <mat-form-field floatLabel="never" hideRequiredMarker>
+            <input type="password" matInput formControlName="password" name="password" placeholder="Password*" required>
+            <mat-error>{{getErrorMessage('password')}}</mat-error>
+          </mat-form-field>
+          <mat-checkbox class="checkbox" formControlName="rememberMe">Remember me</mat-checkbox>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <div fxLayoutAlign="center center" class="button">
+    <button class="btn-login" type="button" color="primary" [disabled]="isLoginBtnDisabled" (click)="onSubmit()"
+            mat-button>
+      <mat-icon *ngIf="isLoginBtnDisabled; else loginText">
+        <mat-spinner diameter="20"></mat-spinner>
+      </mat-icon>
+      <ng-template #loginText>Login</ng-template>
+    </button>
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <p class="btn-forgot-password"><span class="pass-link" (click)="openForgotPasswordDialog()">Forgot Password?</span></p>
+    <p>Don't have an account yet? <span class="sign-up-link" routerLink="/register">Sign Up</span></p>
+  </div>
+</div>

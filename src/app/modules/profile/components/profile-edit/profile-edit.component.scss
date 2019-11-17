@@ -1,0 +1,37 @@
+@import "src/styleguide/shared.scss";
+
+// .register-container {
+//   background: url('/assets/img/background.png') no-repeat center;
+//   background-size: cover;
+// }
+
+app-card, .app-card-content {
+  width: 100%;
+}
+
+.register-card {
+  padding: 50px;
+  min-width: 950px;
+}
+
+.btn-container {
+  margin-top: 25px;
+}
+
+.btn-register {
+  @include btn-primary;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.btn-cancel {
+  @include btn-secondary;
+
+  margin-right: 15px;
+}

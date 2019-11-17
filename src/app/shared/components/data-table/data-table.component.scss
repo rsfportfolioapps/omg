@@ -1,0 +1,62 @@
+@import "src/styleguide/shared.scss";
+
+.c-mat-row {
+	border: 1px solid $color-gray-1;
+  border-top: none;
+
+  &:hover {
+    background-color: $color-gray-3;
+    color: $color-black-0;
+  }
+}
+
+span.h-underline:hover {
+  text-decoration: underline;
+}
+
+.c-mat-cell {
+  flex: 1;
+	word-wrap: break-word;
+	min-height: 48px;
+  border-left: 1px solid $color-gray-1;
+  padding: 25px 15px;
+  position: relative;
+
+  div {
+    width: 47px;
+
+    img {
+      width: 100%;
+    }
+  }
+  
+}
+
+.c-mat-cell.date {
+	border-left: none;
+}
+
+.far, .fas {
+  font-size: 16px;
+  cursor: pointer;
+  color: $color-black-1;
+}
+
+.tags {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 14px;
+  display: block !important;
+}
+
+.paginator-container {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+
+.filename {
+  cursor: pointer;
+}
+

@@ -1,0 +1,114 @@
+@import "src/styleguide/shared.scss";
+
+app-card, .app-card-content {
+  width: 100%;
+}
+
+.app-card-content {
+
+  .reset-wrapper {
+    margin-bottom: 20px;
+  }
+}
+
+table, app-data-table  {
+  width: 100%;
+}
+
+.history-card {
+  padding: 32px 20px 20px;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 651px;
+}
+
+.mat-form-field, app-dropdown-multi-select-search  {
+  width: 95%;
+}
+
+.reset-filter {
+  cursor: pointer;
+  text-decoration: underline;
+  color: $color-primary;
+}
+
+.table-header {
+  background: $color-black-2;
+  color: $color-white;
+  min-height: 55px !important;
+  border: none !important;
+  border-radius: 4px 4px 0 0;
+}
+
+.c-mat-table {
+  display: block;
+  width: 100%;
+  position: relative;
+
+  mat-progress-bar {
+    position: absolute;
+  }
+}
+
+.c-mat-row,
+.c-mat-header-row {
+  border: 1px solid $color-gray-1;
+  border-top: none;
+}
+
+.filter {
+  border-left: 1px solid $color-gray-1;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 48px;
+}
+
+.filter.date {
+	border-left: none;
+}
+
+:host ::ng-deep .md-drppicker.shown {
+  width: 526px;
+}
+
+:host ::ng-deep th.mat-header-cell:first-of-type {
+   padding-left: 0px;
+}
+
+:host ::ng-deep .md-drppicker td.active,
+.md-drppicker td.active:hover {
+  background: $color-primary !important;
+}
+
+:host ::ng-deep .md-drppicker .btn {
+  background: $color-primary !important;
+  padding: 0 16px;
+  border-radius: 5px;
+}
+
+:host ::ng-deep .md-drppicker .btn-default {
+  @include btn-default;
+}
+
+:host ::ng-deep .mat-cell, .filter-header  {
+  border-right: 1px solid $color-gray;
+  padding-left: 10px !important;
+  padding-right: 10px;
+}
+
+:host ::ng-deep .mat-cell:first-child, .filter-header:first-child  {
+  border-left: 1px solid $color-gray;
+}
+
+:host ::ng-deep .mat-form-field-underline {
+  display: none;
+}
+
+:host ::ng-deep .c-mat-header-row .mat-form-field-infix {
+  font-size: 14px;
+}
+
+:host ::ng-deep .c-mat-header-row .mat-form-field-wrapper {
+  padding-bottom: 10px;
+  padding-top: 5px;
+}

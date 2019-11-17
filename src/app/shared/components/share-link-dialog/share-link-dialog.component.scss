@@ -1,0 +1,66 @@
+@import "src/styleguide/shared.scss";
+
+:host {
+    display: block;
+    width: 600px;
+    position: absolute;
+    right: 0;
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 5px 0 9px 0 rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin-bottom: 10px;
+    top: -115px;
+    -webkit-animation: fadein 0.5s;
+       -moz-animation: fadein 0.5s;
+        -ms-animation: fadein 0.5s;
+         -o-animation: fadein 0.5s;
+            animation: fadein 0.5s;
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    &:after {
+        content:'';
+        position: absolute;
+        top: 100%;
+        right: 15px;
+        margin: 0 auto;
+        width: 0;
+        height: 0;
+        border-top: solid 15px #ffffff;
+        border-left: solid 15px transparent;
+        border-right: solid 15px transparent;
+    }
+
+    p {
+        margin-bottom: unset;
+    }
+    
+    .btn-copy {
+        @include btn-primary;
+        width: 124px;
+    }
+
+    ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: unset;
+    }
+
+    ::ng-deep .mat-form-field-label {
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    mat-form-field {
+        input {
+            margin-right: 15px;
+            border-bottom: 1px solid #707070;
+        }
+    }
+
+    i.fas.fa-times {
+        cursor: pointer;
+    }
+}
